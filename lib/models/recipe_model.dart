@@ -5,10 +5,13 @@ class RecipeModel {
   String url;
 
   RecipeModel(
-      {required this.url,
-      required this.image,
-      required this.source,
-      required this.label});
+      {this.url = "", this.image = "", this.source = "", this.label = ""});
 
-  // factory RecipeModel.fromMap()
+  factory RecipeModel.fromMap(Map<String, dynamic> parsedJson) {
+    return RecipeModel(
+        url: parsedJson["url"],
+        image: parsedJson["image"],
+        source: parsedJson["source"],
+        label: parsedJson["label"]);
+  }
 }
