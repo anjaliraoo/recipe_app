@@ -37,6 +37,7 @@ class _HomeState extends State<Home> {
       recipes.add(recipeModel);
     });
 
+    setState(() {});
     print("$recipes.toString()");
   }
 
@@ -57,7 +58,12 @@ class _HomeState extends State<Home> {
           child: Container(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  vertical: Platform.isIOS ? 60 : 30, horizontal: 24),
+                  vertical: !kIsWeb
+                      ? Platform.isIOS
+                          ? 60
+                          : 24
+                      : 24,
+                  horizontal: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -125,6 +131,13 @@ class _HomeState extends State<Home> {
                             }
                           },
                           child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              gradient: LinearGradient(colors: [
+                                Color(oxffA2834D),
+                                Color(oxffBC9A5F),
+                              ]),
+                            ),
                             child: const Icon(
                               Icons.search,
                               color: Colors.white,
@@ -133,6 +146,9 @@ class _HomeState extends State<Home> {
                         )
                       ],
                     ),
+                  ),
+                  const SizedBox(
+                    height: 30,
                   ),
                   Container(
                     child: GridView(

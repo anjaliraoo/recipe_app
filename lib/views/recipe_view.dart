@@ -22,13 +22,14 @@ class _RecipeViewState extends State<RecipeView> {
 
   @override
   void initState() {
+    // TODO: implement initState
+    super.initState();
+
     if (widget.postUrl.contains("http://")) {
       finalUrl = widget.postUrl.replaceAll("http://", "https://");
     } else {
       finalUrl = widget.postUrl;
     }
-    // TODO: implement initState
-    super.initState();
   }
 
   @override
@@ -42,8 +43,8 @@ class _RecipeViewState extends State<RecipeView> {
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.white30, Colors.white],
-                      begin: FractionalOffset.centerRight,
-                      end: FractionalOffset.centerLeft)),
+                      begin: FractionalOffset.topRight,
+                      end: FractionalOffset.bottomLeft)),
               padding: EdgeInsets.only(
                   top: Platform.isIOS ? 60 : 30,
                   right: 24,
@@ -64,6 +65,22 @@ class _RecipeViewState extends State<RecipeView> {
                 ],
               ),
             ),
+            Container(
+              height: MediaQuery.of(context).size.height -
+                  (Platform.isIOS ? 104 : 30),
+              width: MediaQuery.of(context).size.width,
+              child: WebView(
+                  onPageFinished: (val) {
+                    print(val);
+                  },
+                  JavaScriptMode: JavaScriptMode.unrestricted,
+                  initialUrl: finalUrl,
+                  onWebViewCreated: (WebViewController webViewController) {
+                    setState(() {
+                      _controller.complete(webViewController);
+                    });
+                  }),
+            )
           ],
         ),
       ),
