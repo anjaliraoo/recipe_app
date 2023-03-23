@@ -133,9 +133,9 @@ class _HomeState extends State<Home> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
-                              gradient: LinearGradient(colors: [
-                                Color(oxffA2834D),
-                                Color(oxffBC9A5F),
+                              gradient: const LinearGradient(colors: [
+                                Colors.amberAccent,
+                                Colors.blueGrey,
                               ]),
                             ),
                             child: const Icon(
