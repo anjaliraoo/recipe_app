@@ -69,17 +69,17 @@ class _RecipeViewState extends State<RecipeView> {
               height: MediaQuery.of(context).size.height -
                   (Platform.isIOS ? 104 : 30),
               width: MediaQuery.of(context).size.width,
-              child: WebView(
-                  onPageFinished: (val) {
-                    print(val);
-                  },
-                  JavaScriptMode: JavaScriptMode.unrestricted,
-                  initialUrl: finalUrl,
-                  onWebViewCreated: (WebViewController webViewController) {
-                    setState(() {
-                      _controller.complete(webViewController);
-                    });
-                  }),
+              // child: WebView(
+              //      onPageFinished: (val) {
+              //       print(val);
+              //     },
+              //     JavaScriptMode: JavaScriptMode.unrestricted,
+              //     initialUrl: finalUrl,
+              //     onWebViewCreated: (WebViewController webViewController) {
+              //       setState(() {
+              //         _controller.complete(webViewController);
+              //       });
+              //     }),
             )
           ],
         ),
